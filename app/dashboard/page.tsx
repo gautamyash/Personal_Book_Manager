@@ -133,63 +133,65 @@ export default function DashboardPage() {
   );
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-6 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <main className="app-page">
+      <div className="app-container">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold sm:text-4xl">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Personal Book Manager
             </h1>
 
-            <p className="mt-2 text-gray-500">Manage your reading journey.</p>
+            <p className="mt-2 text-slate-600">Manage your reading journey.</p>
           </div>
 
           <button
             onClick={handleLogout}
-            className="w-full rounded bg-red-600 px-5 py-3 text-white sm:w-auto"
+            className="app-button app-button-danger w-full sm:w-auto"
           >
             Logout
           </button>
         </div>
 
         <div className="mb-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl bg-white p-6 shadow">
-            <h2 className="text-gray-500">Total Books</h2>
+          <div className="app-card p-6">
+            <h2 className="text-sm font-medium text-slate-500">Total Books</h2>
 
             <p className="mt-2 text-3xl font-bold">{allBooks.length}</p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow">
-            <h2 className="text-gray-500">Want to Read</h2>
+          <div className="app-card p-6">
+            <h2 className="text-sm font-medium text-slate-500">
+              Want to Read
+            </h2>
 
             <p className="mt-2 text-3xl font-bold">{want}</p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow">
-            <h2 className="text-gray-500">Reading</h2>
+          <div className="app-card p-6">
+            <h2 className="text-sm font-medium text-slate-500">Reading</h2>
 
             <p className="mt-2 text-3xl font-bold">{reading}</p>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow">
-            <h2 className="text-gray-500">Completed</h2>
+          <div className="app-card p-6">
+            <h2 className="text-sm font-medium text-slate-500">Completed</h2>
 
             <p className="mt-2 text-3xl font-bold">{completed}</p>
           </div>
         </div>
 
-        <div className="mb-8 grid gap-4 rounded-xl border bg-white p-6 shadow md:grid-cols-2">
+        <div className="app-card mb-8 grid gap-4 p-6 md:grid-cols-2">
           <div>
             <label
               htmlFor="status-filter"
-              className="mb-2 block text-sm font-medium text-gray-600"
+              className="app-label"
             >
               Filter by Status
             </label>
 
             <select
               id="status-filter"
-              className="w-full rounded border p-3"
+              className="app-input"
               value={statusFilter}
               onChange={(e) =>
                 setStatusFilter(e.target.value as BookStatus | "")
@@ -205,14 +207,14 @@ export default function DashboardPage() {
           <div>
             <label
               htmlFor="tag-filter"
-              className="mb-2 block text-sm font-medium text-gray-600"
+              className="app-label"
             >
               Filter by Tag
             </label>
 
             <select
               id="tag-filter"
-              className="w-full rounded border p-3"
+              className="app-input"
               value={tagFilter}
               onChange={(e) => setTagFilter(e.target.value)}
               disabled={tagOptions.length === 0}
@@ -228,7 +230,7 @@ export default function DashboardPage() {
         </div>
 
         {error && (
-          <div className="mb-6 rounded border border-red-200 bg-red-50 p-4 text-red-700">
+          <div className="app-alert-error mb-6">
             {error}
           </div>
         )}
@@ -236,7 +238,7 @@ export default function DashboardPage() {
         <BookForm onSubmit={handleCreate} />
 
         {loading ? (
-          <div className="rounded-xl border bg-white p-8 text-center text-gray-500 shadow">
+          <div className="app-state">
             Loading books...
           </div>
         ) : (

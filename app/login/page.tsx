@@ -31,32 +31,40 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-100">
+    <main className="auth-page">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md rounded-xl bg-white p-8 shadow"
+        className="auth-card"
       >
-        <h1 className="mb-6 text-3xl font-bold">Welcome Back</h1>
+        <h1 className="mb-2 text-3xl font-bold tracking-tight">
+          Welcome Back
+        </h1>
+
+        <p className="mb-6 text-slate-600">
+          Log in to manage your personal library.
+        </p>
 
         <input
           type="email"
           placeholder="Email"
-          className="mb-4 w-full rounded border p-3"
+          className="app-input mb-4"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
 
         <input
           type="password"
           placeholder="Password"
-          className="mb-6 w-full rounded border p-3"
+          className="app-input mb-6"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <button
           disabled={loading}
-          className="w-full rounded bg-black p-3 text-white"
+          className="app-button app-button-primary w-full"
         >
           {loading ? "Signing In..." : "Login"}
         </button>

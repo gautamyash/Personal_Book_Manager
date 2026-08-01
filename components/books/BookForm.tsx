@@ -44,13 +44,13 @@ export default function BookForm({ onSubmit }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-8 rounded-xl border bg-white p-6 shadow"
+      className="app-card mb-8 p-6"
     >
       <h2 className="mb-4 text-xl font-semibold">Add Book</h2>
 
       <div className="grid gap-4 md:grid-cols-2">
         <input
-          className="rounded border p-3"
+          className="app-input"
           placeholder="Book Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -58,7 +58,7 @@ export default function BookForm({ onSubmit }: Props) {
         />
 
         <input
-          className="rounded border p-3"
+          className="app-input"
           placeholder="Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
@@ -66,14 +66,14 @@ export default function BookForm({ onSubmit }: Props) {
         />
 
         <input
-          className="rounded border p-3 md:col-span-2"
+          className="app-input md:col-span-2"
           placeholder="Tags (comma separated)"
           value={tags}
           onChange={(e) => setTags(e.target.value)}
         />
 
         <select
-          className="rounded border p-3"
+          className="app-input"
           value={status}
           onChange={(e) => setStatus(e.target.value as BookStatus)}
         >
@@ -86,7 +86,7 @@ export default function BookForm({ onSubmit }: Props) {
       <button
         type="submit"
         disabled={loading}
-        className="mt-6 rounded bg-black px-6 py-3 text-white"
+        className="app-button app-button-primary mt-6"
       >
         {loading ? "Saving..." : "Add Book"}
       </button>

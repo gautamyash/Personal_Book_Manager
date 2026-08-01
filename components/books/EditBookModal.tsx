@@ -66,35 +66,42 @@ function EditBookForm({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4 py-6">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl"
+        className="app-card w-full max-w-lg p-6 shadow-xl"
       >
         <h2 className="mb-5 text-2xl font-bold">Edit Book</h2>
 
         <input
-          className="mb-4 w-full rounded border p-3"
+          className="app-input mb-4"
+          aria-label="Book title"
+          placeholder="Book Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
 
         <input
-          className="mb-4 w-full rounded border p-3"
+          className="app-input mb-4"
+          aria-label="Author"
+          placeholder="Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
           required
         />
 
         <input
-          className="mb-4 w-full rounded border p-3"
+          className="app-input mb-4"
+          aria-label="Tags"
+          placeholder="Tags (comma separated)"
           value={tags}
           onChange={(e) => setTags(e.target.value)}
         />
 
         <select
-          className="mb-6 w-full rounded border p-3"
+          className="app-input mb-6"
+          aria-label="Reading status"
           value={status}
           onChange={(e) => setStatus(e.target.value as BookStatus)}
         >
@@ -107,14 +114,14 @@ function EditBookForm({
           <button
             type="button"
             onClick={onClose}
-            className="rounded border px-5 py-2"
+            className="app-button app-button-secondary"
           >
             Cancel
           </button>
 
           <button
             disabled={loading}
-            className="rounded bg-black px-5 py-2 text-white"
+            className="app-button app-button-primary"
           >
             {loading ? "Saving..." : "Save"}
           </button>
