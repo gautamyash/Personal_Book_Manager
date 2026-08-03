@@ -1,6 +1,3 @@
-import "./dns-debug"; // sets servers on BOTH the callback and promises dns resolvers, and logs every SRV/TXT call the driver makes
-import dns from "dns";
-import { isMainThread, threadId } from "worker_threads";
 import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI!;
@@ -19,17 +16,6 @@ if (!cached) {
 }
 
 export async function connectDB() {
-  console.log(
-    "[connectDB] pid",
-    process.pid,
-    "isMainThread",
-    isMainThread,
-    "threadId",
-    threadId,
-    "- dns servers right now:",
-    dns.getServers()
-  );
-
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
